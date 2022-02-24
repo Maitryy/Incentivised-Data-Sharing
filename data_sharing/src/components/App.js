@@ -5,6 +5,7 @@
  import LandingPage from './LandingPage'
 import Navbar from './Navbar';
 import CSVReader from 'react-csv-reader'
+import ParticleSettings from './ParticleSettings.js';
 
  const App = () =>  {
      
@@ -64,13 +65,16 @@ import CSVReader from 'react-csv-reader'
             
             <div>
             <h1> Hey There...</h1>
-            
+            {/* <ParticleSettings/> */}
             {/* <h3>Address: {defaultAccount}</h3> */}
             <Navbar account= {defaultAccount} />
-            <button onClick={connectWalletHandler}>{connButtonText}</button>
+            <button  style={{background_color : 'white'}} onClick={connectWalletHandler}>{connButtonText}</button>
+            
             {/* <LandingPage/> */}
             <CSVReader onFileLoaded={(data, fileInfo, originalFile) => console.dir(data.toString())} />
+            
             </div>
+            
         )
      
  }
