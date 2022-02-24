@@ -1,63 +1,96 @@
 import React, {useState} from 'react'
 import {ethers} from 'ethers'
 import './LandingPage.css'
+import ReactDOM from 'react-dom';
 
 const LandingPage = () => {
+	const Header = (props) => {
+		return (
+		  <header>
+			<h2 className="logo">{props.brand}</h2>
+			<div
+			  onClick={() => {
+				props.setActiveClass(!props.activeClass);
+			  }}
+			  className={props.activeClass ? "toggle active" : "toggle"}
+			></div>
+		  </header>
+		);
+	  };
+	  
+	  const Contents = (props) => {
+		return (
+		  <div class="text">
+			<h2> {props.title} </h2>
+			<h3> {props.subtitle} </h3>
+			<p> {props.content} </p>
+			<a href="#">Browse</a>
+		  </div>
+		);
+	  };
+	  
+	  const Image = () => {
+		return <img src="https://i.ytimg.com/vi/-MKapbz0GIo/maxresdefault.jpg" />;
+	  };
+	  
+	  const Overlay = () => {
+		return <div className="overlay"> </div>;
+	  };
+	  
+	  const Footer = (props) => {
+		return (
+		  <div className="footer">
+			{" "}
+			<p>{props.content} </p>{" "}
+		  </div>
+		);
+	  };
+	  const Menu = () => {
+		return (
+		  <div className="menu">
+			<ul>
+			  <li>
+				<a href="#"> Home </a>
+			  </li>
+			  <li>
+				<a href="#"> Home </a>
+			  </li>
+			  <li>
+				<a href="#"> Home </a>
+			  </li>
+			</ul>
+		  </div>
+		);
+	  };
+	  const App = () => {
+		const [activeClass, setActiveClass] = React.useState(false);
+	  
+		return (
+		  <div>
+			<section className={activeClass ? "active container" : "container"}>
+			  <Header
+				setActiveClass={setActiveClass}
+				activeClass={activeClass}
+				brand="brand"
+			  />
+			  <Image />
+			  <Overlay />
+			  <Contents
+				title="our brand"
+				subtitle="The best"
+				content="Lorem ipsum dolor"
+			  />
+			  <Footer content="Copyright 2021" />
+			</section>
+	  
+			<Menu />
+		  </div>
+		);
+	  };
+	  
+	  ReactDOM.render(<App />, document.getElementById("root"));
+	  
 
-	// const [errorMessage, setErrorMessage] = useState(null);
-	// const [defaultAccount, setDefaultAccount] = useState(null);
-	// const [userBalance, setUserBalance] = useState(null);
-	// const [connButtonText, setConnButtonText] = useState('Connect Wallet');
-
-	// const connectWalletHandler = () => {
-	// 	if (window.ethereum && window.ethereum.isMetaMask) {
-	// 		console.log('MetaMask Here!');
-
-	// 		window.ethereum.request({ method: 'eth_requestAccounts'})
-	// 		.then(result => {
-	// 			accountChangedHandler(result[0]);
-	// 			setConnButtonText('Wallet Connected');
-	// 			getAccountBalance(result[0]);
-	// 		})
-	// 		.catch(error => {
-	// 			setErrorMessage(error.message);
-			
-	// 		});
-
-
-
-	// 	} else {
-	// 		console.log('Need to install MetaMask');
-	// 		setErrorMessage('Please install MetaMask browser extension to interact');
-	// 	}
-	// }
-
-	// // update account, will cause component re-render
-	// const accountChangedHandler = (newAccount) => {
-	// 	setDefaultAccount(newAccount);
-	// 	getAccountBalance(newAccount.toString());
-	// }
-
-	// const getAccountBalance = (account) => {
-	// 	window.ethereum.request({method: 'eth_getBalance', params: [account, 'latest']})
-	// 	.then(balance => {
-	// 		setUserBalance(ethers.utils.formatEther(balance));
-	// 	})
-	// 	.catch(error => {
-	// 		setErrorMessage(error.message);
-	// 	});
-	// };
-
-	// const chainChangedHandler = () => {
-	// 	// reload the page to avoid any errors with chain change mid use of application
-	// 	window.location.reload();
-	// }
-
-
-	// // listen for account changes
-	// window.ethereum.on('accountsChanged', accountChangedHandler);
-
-	// window.ethereum.on('chainChanged', chainChangedHandler);
 	
 	return (
 		<div className='landingPage'>
@@ -70,9 +103,7 @@ const LandingPage = () => {
 				<h3>Balance: {userBalance}</h3>
 			</div>
 			{errorMessage} */}
-            <h1>
-                hsdfieb;fve
-            </h1>
+            <div id="root"></div>
 		</div>
 	);
 }

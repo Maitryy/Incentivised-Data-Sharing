@@ -4,6 +4,8 @@
  import { Redirect } from 'react-router-dom';
  import LandingPage from './LandingPage'
 import Navbar from './Navbar';
+import CSVReader from 'react-csv-reader'
+
  const App = () =>  {
      
         const [errorMessage, setErrorMessage] = useState(null);
@@ -66,6 +68,8 @@ import Navbar from './Navbar';
             {/* <h3>Address: {defaultAccount}</h3> */}
             <Navbar account= {defaultAccount} />
             <button onClick={connectWalletHandler}>{connButtonText}</button>
+            {/* <LandingPage/> */}
+            <CSVReader onFileLoaded={(data, fileInfo, originalFile) => console.dir(data.toString())} />
             </div>
         )
      
