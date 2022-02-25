@@ -6,6 +6,8 @@
 import Navbar from './Navbar';
 import CSVReader from 'react-csv-reader'
 import ParticleSettings from './ParticleSettings.js';
+import './Main.css';
+import img from './img.svg';
 
  const App = () =>  {
      
@@ -67,11 +69,60 @@ import ParticleSettings from './ParticleSettings.js';
             <h1> Hey There...</h1>
             {/* <ParticleSettings/> */}
             {/* <h3>Address: {defaultAccount}</h3> */}
-            <Navbar account= {defaultAccount} />
-            <button  style={{background_color : 'white'}} onClick={connectWalletHandler}>{connButtonText}</button>
+            {/* <Navbar account= {defaultAccount} /> */}
+            {/* <button  style={{background_color : 'white'}} onClick={connectWalletHandler}>{connButtonText}</button> */}
             
             {/* <LandingPage/> */}
-            <CSVReader onFileLoaded={(data, fileInfo, originalFile) => console.dir(data.toString())} />
+            {/* <CSVReader onFileLoaded={(data, fileInfo, originalFile) => console.dir(data.toString())} /> */}
+            <body>
+
+        <header className="l-header">
+            <nav className="nav bd-grid">
+                <div>
+                    <a href="#" className="nav__logo">Account No:  {defaultAccount} </a>
+                </div>
+
+                <div className="nav__toggle" id="nav-toggle">
+                    <i className='bx bx-menu'></i>
+                </div>
+
+                <div className="nav__menu" id="nav-menu">
+                    <div className="nav__close" id="nav-close">
+                        <i className='bx bx-x'></i>
+                    </div>
+
+                    <ul className="nav__list">
+                    <button  className='home__button' onClick={connectWalletHandler}>{connButtonText}</button>
+                    
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main className="l-main">
+            <section className="home" id="home">
+                <div className="home__container bd-grid">
+                    <div className="home__img">
+                        <img src={img} alt="" data-speed="-2" className="move"/>
+                    </div>
+
+                    <div className="home__data">
+                        <h1 className="home__title">Incentivised <br/>Data Sharing <br/></h1>
+                        <div className='home__button'>
+                        <CSVReader  onFileLoaded={(data, fileInfo, originalFile) => console.dir(data.toString())} />
+                         </div>
+                        
+                        
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+
+        <script src="assets/js/main.js"></script>
+    </body>
             
             </div>
             
