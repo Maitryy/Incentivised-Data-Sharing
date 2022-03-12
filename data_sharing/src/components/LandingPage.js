@@ -1,97 +1,11 @@
 import React, {useState} from 'react'
-import {ethers} from 'ethers'
 import './LandingPage.css'
 import ReactDOM from 'react-dom';
+import CSVReader from 'react-csv-reader'
+import img from './img.svg';
+import props from 'prop-types';
 
-const LandingPage = () => {
-	const Header = (props) => {
-		return (
-		  <header>
-			<h2 className="logo">{props.brand}</h2>
-			<div
-			  onClick={() => {
-				props.setActiveClass(!props.activeClass);
-			  }}
-			  className={props.activeClass ? "toggle active" : "toggle"}
-			></div>
-		  </header>
-		);
-	  };
-	  
-	  const Contents = (props) => {
-		return (
-		  <div class="text">
-			<h2> {props.title} </h2>
-			<h3> {props.subtitle} </h3>
-			<p> {props.content} </p>
-			<a href="#">Browse</a>
-		  </div>
-		);
-	  };
-	  
-	  const Image = () => {
-		return <img src="https://i.ytimg.com/vi/-MKapbz0GIo/maxresdefault.jpg" />;
-	  };
-	  
-	  const Overlay = () => {
-		return <div className="overlay"> </div>;
-	  };
-	  
-	  const Footer = (props) => {
-		return (
-		  <div className="footer">
-			{" "}
-			<p>{props.content} </p>{" "}
-		  </div>
-		);
-	  };
-	  const Menu = () => {
-		return (
-		  <div className="menu">
-			<ul>
-			  <li>
-				<a href="#"> Home </a>
-			  </li>
-			  <li>
-				<a href="#"> Home </a>
-			  </li>
-			  <li>
-				<a href="#"> Home </a>
-			  </li>
-			</ul>
-		  </div>
-		);
-	  };
-	  const App = () => {
-		const [activeClass, setActiveClass] = React.useState(false);
-	  
-		return (
-		  <div>
-			<section className={activeClass ? "active container" : "container"}>
-			  <Header
-				setActiveClass={setActiveClass}
-				activeClass={activeClass}
-				brand="brand"
-			  />
-			  <Image />
-			  <Overlay />
-			  <Contents
-				title="our brand"
-				subtitle="The best"
-				content="Lorem ipsum dolor"
-			  />
-			  <Footer content="Copyright 2021" />
-			</section>
-	  
-			<Menu />
-		  </div>
-		);
-	  };
-	  
-	  ReactDOM.render(<App />, document.getElementById("root"));
-	  
-
-	
+const LandingPage = ({connectWalletHandler, connButtonText, defaultAccount}) => {
 	return (
 		<div className='landingPage'>
 		{/* <h4> {"Connection to MetaMask using window.ethereum methods"} </h4>
@@ -104,6 +18,54 @@ const LandingPage = () => {
 			</div>
 			{errorMessage} */}
             <div id="root"></div>
+
+        <header className="l-header">
+            <nav className="nav bd-grid">
+                
+
+                <div className="nav__toggle" id="nav-toggle">
+                    <i className='bx bx-menu'></i>
+                </div>
+
+                <div className="nav__menu" id="nav-menu">
+                    <div className="nav__close" id="nav-close">
+                        <i className='bx bx-x'></i>
+                    </div>
+
+                    <ul className="nav__list">
+                    <button  className='home__button' onClick={connectWalletHandler}>{connButtonText}</button>
+                    
+                    </ul>
+					<div>
+                    <a href="#" className="nav__logo">Account No:  {defaultAccount} </a>
+                </div>
+                </div>
+            </nav>
+        </header>
+
+        <main className="l-main">
+            <section className="home" id="home">
+                <div className="home__container bd-grid">
+                    <div className="home__img">
+                        <img src={img} alt="" data-speed="-2" className="move"/>
+                    </div>
+
+                    <div className="home__data">
+                        <h1 className="home__title">Incentivised <br/>Data Sharing <br/></h1>
+                        <div className='home__button'>
+                        <CSVReader  onFileLoaded={(data, fileInfo, originalFile) => console.dir(data.toString())} />
+                         </div>
+                        
+                        
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+
+        <script src="assets/js/main.js"></script>
 		</div>
 	);
 }
