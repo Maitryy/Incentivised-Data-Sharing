@@ -8,5 +8,6 @@ const postSchema = new mongoose.Schema({
     col: {type: Number, required: true}
 })
 
+
 const Post = mongoose.model("Post", postSchema);
 module.exports = Post;

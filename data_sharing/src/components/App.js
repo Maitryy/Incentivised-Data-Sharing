@@ -4,6 +4,7 @@
  import { Redirect } from 'react-router-dom';
  import LandingPage from './LandingPage'
 import Navbar from './Navbar';
+import Form from './form'
 
 import ParticleSettings from './ParticleSettings.js';
 import './Main.css';
@@ -79,7 +80,8 @@ import './Main.css';
             {/* <button  style={{background_color : 'white'}} onClick={connectWalletHandler}>{connButtonText}</button> */}
             
             <LandingPage testFunction = {testFunction} connectWalletHandler = {connectWalletHandler} defaultAccount = {defaultAccount} connButtonText={connButtonText}/>
-            {/* <CSVReader onFileLoaded={(data, fileInfo, originalFile) => console.dir(data.toString())} /> */}
+
+            <Form/>
             
             
             </div>

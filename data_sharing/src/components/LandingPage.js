@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import CSVReader from 'react-csv-reader'
 import img from './img.svg';
 import props from 'prop-types';
+import Form from './form.js';
 
 const LandingPage = ({connectWalletHandler, connButtonText, defaultAccount}) => {
 	return (
@@ -56,7 +57,7 @@ const LandingPage = ({connectWalletHandler, connButtonText, defaultAccount}) => 
                         <CSVReader  onFileLoaded={(data, fileInfo, originalFile) => console.dir(data.toString())} />
                          </div>
                         
-                        
+                        <Form/>
 
                     </div>
                 </div>
