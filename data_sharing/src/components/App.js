@@ -5,6 +5,7 @@
  import LandingPage from './LandingPage'
 import Navbar from './Navbar';
 import Form from './form'
+import ShowPosts from './ShowPosts.js'
 
 import ParticleSettings from './ParticleSettings.js';
 import './Main.css';
@@ -81,8 +82,8 @@ import './Main.css';
             
             <LandingPage testFunction = {testFunction} connectWalletHandler = {connectWalletHandler} defaultAccount = {defaultAccount} connButtonText={connButtonText}/>
 
-            <Form/>
-            
+            {/* <Form/> */}
+            <ShowPosts/>
             
             </div>
             
